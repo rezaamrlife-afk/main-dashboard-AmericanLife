@@ -459,28 +459,24 @@ footer {
 .card:nth-child(4) .card-top-bar { background: linear-gradient(90deg, #F59E0B, #FCD34D); }
 .card:nth-child(4) .card-icon-wrap { background: rgba(245,158,11,0.15); }
 
-.card-soon {
-  opacity: 0.6;
-  cursor: default;
-  pointer-events: none;
-}
-.soon-badge {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #F59E0B;
-  background: rgba(245,158,11,0.12);
-  border: 1px solid rgba(245,158,11,0.3);
-  border-radius: 20px;
-  padding: 0.25rem 0.75rem;
-}
-.card-btn-disabled {
-  opacity: 0.35;
-  cursor: default;
-}
 
-@keyframes pulse {
+a.card-btn {
+  text-decoration: none;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.42rem 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.85);
+  background: rgba(27,94,247,0.35);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+a.card-btn:hover {
+  background: var(--blue-bright);
+  border-color: var(--blue-bright);
+  color: #fff;
+}
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.35; }
 }
@@ -584,7 +580,7 @@ footer {
           </div>
         </a>
 
-        <div class="card card-soon">
+        <div class="card">
           <div class="card-glow"></div>
           <div class="card-top-bar"></div>
           <div class="card-body">
@@ -594,28 +590,24 @@ footer {
             <p class="card-desc">Manage kids class sessions, progress tracking, and schedules.</p>
           </div>
           <div class="card-footer">
-            <div class="card-live">
-              <span class="soon-badge">Coming Soon</span>
-            </div>
-            <div class="card-btn card-btn-disabled">Soon</div>
+            <div class="card-live"><span class="live-dot"></span> Live</div>
+            <a class="card-btn" href="https://script.google.com/macros/s/AKfycbyMcDk1t9kWRPxvaUF5vB9YsI9iVMl7SuETxQaI1BpsInajP5p7PtKAG3o2zCFNFaXUow/exec" target="_blank">Open →</a>
           </div>
         </div>
 
       </div>
     </section>
-
     <footer>American Life Bahçeşehir &nbsp;·&nbsp; Management Hub</footer>
   </div>
 </div>
 
 <script>
-  // Splash → Hub after ~3s
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('splash').classList.add('hide');
-      document.getElementById('hub').classList.add('visible');
-    }, 3000);
-  });
+  function showHub() {
+    document.getElementById('splash').classList.add('hide');
+    document.getElementById('hub').classList.add('visible');
+  }
+  setTimeout(showHub, 3000);
+  document.getElementById('splash').addEventListener('click', showHub);
 </script>
 
 </body>
